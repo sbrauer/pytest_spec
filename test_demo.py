@@ -11,6 +11,10 @@ with describe('Foo bar'):
     def spec():
         assert True
 
+    @it('does that')
+    def spec():
+        assert True
+
     # `context` is similar to `describe`
     # Note that both can be nested.
     with context('when such and so'):
@@ -18,14 +22,6 @@ with describe('Foo bar'):
         def spec():
             assert True
 
-    @it('does that')
-    def spec():
-        assert True
-
-
-@it('does something else')
-def spec():
-    assert True
 
 class TestClass:
     def setup(self):
