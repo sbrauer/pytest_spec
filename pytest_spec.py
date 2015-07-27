@@ -48,7 +48,10 @@ class ContextManager:
 
     def __init__(self, obj):
         self.obj = obj
-        self.text = str(obj)
+        if hasattr(obj, '__name__'):
+            self.text = obj.__name__
+        else:
+            self.text = obj
 
     def __enter__(self):
         ContextManager._contexts.append(self)
