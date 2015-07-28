@@ -25,8 +25,7 @@ def it(text):
     of a test case class.
     """
     def wrap(func):
-        frame = inspect.currentframe()
-        namespace = frame.f_back.f_locals
+        namespace = inspect.currentframe().f_back.f_locals
         namespace[_generate_test_name(text)] = func
         return func
     return wrap
@@ -48,10 +47,7 @@ class ContextManager:
 
     def __init__(self, obj):
         self.obj = obj
-        if hasattr(obj, '__name__'):
-            self.text = obj.__name__
-        else:
-            self.text = obj
+        self.text = getattr(obj, '__name__', obj)
 
     def __enter__(self):
         ContextManager._contexts.append(self)
