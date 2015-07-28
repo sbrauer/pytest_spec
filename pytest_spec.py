@@ -2,9 +2,6 @@ import inspect
 import re
 
 
-TEST_PREFIX = 'test_'
-
-
 # Abuse the decorator syntax to create a dynamically named test function.
 def it(text):
     """ Example usage:
@@ -34,7 +31,8 @@ def it(text):
 def _generate_test_name(text):
     texts = ContextManager.context_texts()
     texts.append(text)
-    return TEST_PREFIX + '_'.join([_slugify(t) for t in texts])
+    texts.insert(0, 'test')
+    return '_'.join([_slugify(t) for t in texts])
 
 
 def _slugify(text):
