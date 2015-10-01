@@ -32,7 +32,7 @@ def _generate_test_name(text):
     texts = ContextManager.context_texts()
     texts.append(text)
     texts.insert(0, 'test')
-    return '_'.join([_slugify(t) for t in texts])
+    return '_'.join(_slugify(t) for t in texts)
 
 
 def _slugify(text):
